@@ -5,7 +5,12 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": {
+      "ngx-dynamic-view": [
+        "projects/ngx-dynamic-view/src"
+      ]
+    }
   },
   "files": [
     "test.ts",
