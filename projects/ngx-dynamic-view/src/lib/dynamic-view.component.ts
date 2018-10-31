@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'dynamic-view',
-  template: `
-    <p>
-      ngx-dynamic-view works!
-    </p>
-  `,
-  styles: []
+  templateUrl: 'dynamic-view.component.html',
+  styleUrls: ['dynamic-view.component.scss']
 })
 export class DynamicViewComponent implements OnInit {
 
