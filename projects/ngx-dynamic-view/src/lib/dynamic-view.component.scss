@@ -48,13 +48,17 @@ h4 {
 .btn.m-link:hover {
     text-decoration: underline;
 }
-.action-icon {
+.action-icon,
+.action-icon * {
     color: #999;
     fill: #999;
+    stroke: #999;
 }
-.action-icon:hover {
+.action-icon:hover,
+.action-icon:hover * {
     color: #008ac7;
     fill: #008ac7;
+    stroke: #008ac7;
 }
 .flex {
     display: flex;
@@ -65,6 +69,9 @@ h4 {
 }
 .flex-center {
     align-items: center;
+}
+.vat {
+    vertical-align: top !important;
 }
 .fs16 {
     font-size: 16px !important;
