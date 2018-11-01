@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import "utilities";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+html, body {
+    font-family: Tahoma;
+    font-size: 13px;
+}
+
+h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 24px !important;
+}
+h4 {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.page-content {
+    padding: 12px;
+}
+

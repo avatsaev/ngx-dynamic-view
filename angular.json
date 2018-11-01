@@ -29,6 +29,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/ngx-dynamic-view/src/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
