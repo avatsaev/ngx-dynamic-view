@@ -19,7 +19,13 @@ h4 {
     font-weight: normal;
     margin: 0;
 }
-
+select {
+    font-family: Tahoma;
+    font-size: 13px;
+    width: 150px;
+    border: 1px solid #cecece;
+    outline: none;
+}
 .page-content {
     padding: 12px;
 }

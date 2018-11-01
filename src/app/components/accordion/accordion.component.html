@@ -1,0 +1,8 @@
+<div class="accrodion">
+  <button class="btn m-blank m-link" (click)="onClickHeandler()">
+    Click here <span *ngIf="isOpen">&#8743;</span><span *ngIf="!isOpen">&#8744;</span>
+  </button>
+  <div *ngIf="isOpen" class="accordion-content">
+      Merci, mon cher lion patient. Tu es le meilleur!
+  </div>
+</div>

@@ -1,11 +1,15 @@
 <div class="page-content">
-    <h3>Dynamic componets in Angular</h3>
+    <h3>Dynamic components in Angular</h3>
 
     <!-- Repeated sections -->
     <div class="section">
         <div class="section-header flex">
-            <div class="flex-growth">
-                <h4>Selected component</h4>
+            <div class="flex-growth flex">
+                <h4 class="mr20">Selected component</h4>
+                <select (change)="onComponentSelected($event)">
+                    <option disabled selected>Choose one</option>
+                    <option *ngFor="let item of widgetList" [value]="item.id">{{item.title}}</option>
+                </select>
             </div>
             <button type="button" class="btn m-blank action-icon">
                 <svg height="16" width="16" viewBox="0 0 20 20">
@@ -20,17 +24,8 @@
             </button>
         </div>
         <div class="section-content">
-            Ta-dam!
+            <ng-template #componentHost></ng-template>
         </div>
     </div>
-
-    <!-- Add new section -->
-    <button type="button" class="btn m-blank m-link fs16 flex flex-center mt32">
-        <svg height="20" width="20" viewBox="0 0 20 20" class="vat">
-            <line x1="10" y1="0" x2="10" y2="20" stroke="#333" stroke-width="2" />
-            <line x1="0" y1="10" x2="20" y2="10" stroke="#333" stroke-width="2" />
-          </svg>
-        <span class="ml8">Add new section</span>
-    </button>
     
 </div>

@@ -1,1 +1,5 @@
-<dynamic-view></dynamic-view>
+<dynamic-view 
+ #dv1
+ [widgetList]="widgetList" 
+ (componentInjectionRequested)="onComponentInjectionRequested($event)"
+ ></dynamic-view>
