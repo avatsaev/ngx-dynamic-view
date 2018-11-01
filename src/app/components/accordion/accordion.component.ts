@@ -15,7 +15,7 @@ export class AccordionComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClickHeandler():any {
+  onClickHeandler():void {
     this.details.emit(this.title);
     this.isOpen = !this.isOpen;
   }

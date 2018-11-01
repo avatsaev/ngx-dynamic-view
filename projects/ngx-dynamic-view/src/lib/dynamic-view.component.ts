@@ -24,17 +24,18 @@ export class DynamicViewComponent implements OnInit {
 
 
   injectComponent(placeholder: DynamicViewPlaceholder<any>) {
+    this.componentHost.clear();
     const compoFactory = this.componentFactoryResolver.resolveComponentFactory(placeholder.component);
     const compRef: ComponentRef<any> = this.componentHost.createComponent(compoFactory);
-    for(const inputKey in placeholder.params.inputs){
-      compRef.instance[inputKey] = placeholder.params.inputs[inputKey]
+    if (placeholder.params) {
+      for(const inputKey in placeholder.params.inputs){
+        compRef.instance[inputKey] = placeholder.params.inputs[inputKey];
+      }
+  
+      for(const outputKey in placeholder.params.outputHandlers) {
+        compRef.instance[outputKey].subscribe(e => placeholder.params.outputHandlers[outputKey](e));
+      }
     }
-
-    for(const outputKey in placeholder.params.outputHandlers) {
-      compRef.instance[outputKey].subscribe(e => placeholder.params.outputHandlers[outputKey](e))
-    }
-
-    
   }
 
 

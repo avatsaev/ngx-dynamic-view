@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { DynamicViewComponent, DynamicViewPlaceholder } from 'ngx-dynamic-view';
 import { AccordionComponent } from './components/accordion/accordion.component';
+import { NightSkyComponent } from './components/night-sky/night-sky.component';
 
 
 @Component({
@@ -38,6 +39,8 @@ export class AppComponent {
       }
     
       case 'NS': {
+        const placeholder = new DynamicViewPlaceholder<NightSkyComponent>(NightSkyComponent);
+        this.dv1.injectComponent(placeholder);
         break;
       }
     }
