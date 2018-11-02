@@ -12,7 +12,7 @@ export class DynamicViewComponent implements OnInit {
   @Input() widgetList: Array<{id: string, title: string}> = [];
   @Output() componentInjectionRequested = new EventEmitter<string>();
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(private vcRef: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
   }
@@ -24,8 +24,13 @@ export class DynamicViewComponent implements OnInit {
   injectComponent(placeholder: DynamicViewPlaceholder<any>) {
     this.componentHost.clear();
     const compoFactory = this.componentFactoryResolver.resolveComponentFactory(placeholder.component);
-    const compRef: ComponentRef<any> = this.componentHost.createComponent(compoFactory);
+    
     if (placeholder.params) {
+      const htmlNode = document.createElement('div');
+      htmlNode.innerHTML = placeholder.params.message;
+      const compRef: ComponentRef<any> = this.componentHost.createComponent(compoFactory, 0, undefined, 
+        placeholder.params.message ? [ [htmlNode] ] : []);
+      
       if(placeholder.params.inputs) {
         for(const inputKey in placeholder.params.inputs){
           compRef.instance[inputKey] = placeholder.params.inputs[inputKey];
@@ -37,6 +42,8 @@ export class DynamicViewComponent implements OnInit {
           compRef.instance[outputKey].subscribe(e => placeholder.params.outputHandlers[outputKey](e));
         }
       }
+    } else {
+      const compRef: ComponentRef<any> = this.componentHost.createComponent(compoFactory);
     }
   }
 }

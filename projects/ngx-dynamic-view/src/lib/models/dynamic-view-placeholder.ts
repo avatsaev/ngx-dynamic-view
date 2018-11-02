@@ -6,7 +6,8 @@ export class DynamicViewPlaceholder<T> {
         inputs: {[D in keyof T]?: T[D]},
         outputHandlers: {
             [D in keyof T]?: Function
-        }
+        },
+        message?: string
     }) {}
 
 }
