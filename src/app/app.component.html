@@ -1,5 +1,12 @@
 <dynamic-view 
- #dv1
- [widgetList]="widgetList" 
- (componentInjectionRequested)="onComponentInjectionRequested($event)"
- ></dynamic-view>
+    #dv1
+    [widgetList]="widgetList" 
+    (componentInjectionRequested)="onComponentInjectionRequested($event)">
+    <div *ngIf="selectedComponentId == 'NS'">
+        <p>I know! There are <input type="number" [(ngModel)]="starsAmount" /> ({{starsAmount}}) stars at the sky!</p>
+    </div>
+</dynamic-view>
+
+<p>I know! There are <input type="number" [(ngModel)]="starsAmount" /> ({{starsAmount}}) stars at the sky!</p>
+<!-- <app-night-sky [starsAmount]="starsAmount"></app-night-sky>
+ -->

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-night-sky',
@@ -7,11 +7,26 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class NightSkyComponent implements OnInit {
   @ViewChild('starField', {read: ElementRef}) starField: ElementRef;
+  @Input()starsAmount: number;
+  
+
   constructor() { }
 
+  
   ngOnInit() {
     this.createStareInit();
+    this.starsAmount = (this.starsAmount === undefined ? 50 : this.starsAmount);
+    console.log(this.starsAmount);
   }
+
+  ngOnChanges() {
+    //console.log('this.starsAmount');
+  }
+  ngDoCheck() {
+    let starsAmount = this.starsAmount;
+   // console.log(starsAmount);
+  }
+
 
   private createStareInit() {
     const starCreation = setInterval(this.createStare, 800, this.starField);
