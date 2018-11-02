@@ -1,0 +1,17 @@
+.night-sky {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: #4B4E63;
+}
+.moon {
+    z-index: 2;
+    display: inline-block;
+    margin: 20px 0 0 35px;
+}
+.stars-field {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
