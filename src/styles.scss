@@ -26,6 +26,13 @@ select, input {
     border: 1px solid #cecece;
     outline: none;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type='number'] {
+    -moz-appearance: textfield;
+}
 p {
     margin-bottom: 8px;
 }
@@ -33,4 +40,9 @@ p {
     padding: 12px;
     width: 780px;
 }
-
+.string-input {
+    border: none;
+    border-bottom: 1px solid #cecece;
+    min-width: 60px;
+    width: auto;
+}

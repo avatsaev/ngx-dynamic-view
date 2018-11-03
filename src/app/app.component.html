@@ -3,10 +3,17 @@
     [widgetList]="widgetList" 
     (componentInjectionRequested)="onComponentInjectionRequested($event)">
     <div *ngIf="selectedComponentId == 'NS'">
-        <p>I know! There are <input type="number" [(ngModel)]="starsAmount" /> ({{starsAmount}}) stars at the sky!</p>
+        <p>I know! There are 
+            <input class="string-input" 
+                #starsAmountInput
+                type="number" 
+                max="1000" 
+                min="0" 
+                [(ngModel)]="starsAmount" 
+                (ngModelChange)="onStarsAmountChange()" /> 
+            stars at the sky!</p>
     </div>
 </dynamic-view>
-
-<p>I know! There are <input type="number" [(ngModel)]="starsAmount" /> ({{starsAmount}}) stars at the sky!</p>
-<!-- <app-night-sky [starsAmount]="starsAmount"></app-night-sky>
- -->
+<div #test *ngIf="selectedComponentId == 'NS'">
+    test
+</div>

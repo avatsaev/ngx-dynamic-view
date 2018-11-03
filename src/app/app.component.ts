@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, ContentChild, ElementRef } from '@angular/core';
 import { DynamicViewComponent, DynamicViewPlaceholder } from 'ngx-dynamic-view';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { NightSkyComponent } from './components/night-sky/night-sky.component';
@@ -12,22 +12,21 @@ import { NightSkyComponent } from './components/night-sky/night-sky.component';
 export class AppComponent implements OnInit {
   selectedComponentId:string;
   starsAmount:number;
-  _starsAmount:number;
 
-  @ViewChild('dv1') dv1: DynamicViewComponent
+  @ViewChild('dv1') dv1: DynamicViewComponent;
+  @ViewChild('starsAmountInput', {read: ElementRef}) starsAmountInput: ElementRef;
+
+  @ViewChild('test', {read: ElementRef}) test: ElementRef;
 
   widgetList = [
     {id: 'ACC', title: 'Accordion' },
     {id: 'NS', title: 'Night Sky'}
   ];
 
-  ngOnChanges() {
-    if (this.selectedComponentId === 'NS') {
-      this._starsAmount = this.starsAmount;
-      this.createNS();
-    }
+  onStarsAmountChange() {
+    console.log('change', this.starsAmount);
+    this.createNS();
   }
-
 
   ngOnInit() {}
 
@@ -53,6 +52,9 @@ export class AppComponent implements OnInit {
     
       case 'NS': {
         this.createNS();
+        // here I need to set focus on input
+        console.log(this.test);
+        //this.starsAmountInput.nativeElement.focus();
         break;
       }
     }
@@ -61,7 +63,7 @@ export class AppComponent implements OnInit {
   private createNS() {
     const placeholder = new DynamicViewPlaceholder<NightSkyComponent>(NightSkyComponent, {
       inputs: {
-        starsAmount: this._starsAmount
+        starsAmount: this.starsAmount
       }
     });
     this.dv1.injectComponent(placeholder);
