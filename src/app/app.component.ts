@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ContentChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ContentChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { DynamicViewComponent, DynamicViewPlaceholder } from 'ngx-dynamic-view';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { NightSkyComponent } from './components/night-sky/night-sky.component';
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   @ViewChild('dv1') dv1: DynamicViewComponent;
   @ViewChild('starsAmountInput', {read: ElementRef}) starsAmountInput: ElementRef;
 
-  @ViewChild('test', {read: ElementRef}) test: ElementRef;
+  constructor(private cdr:ChangeDetectorRef) {}
 
   widgetList = [
     {id: 'ACC', title: 'Accordion' },
@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
   ];
 
   onStarsAmountChange() {
-    console.log('change', this.starsAmount);
     this.createNS();
   }
 
@@ -52,9 +51,9 @@ export class AppComponent implements OnInit {
     
       case 'NS': {
         this.createNS();
-        // here I need to set focus on input
-        console.log(this.test);
-        //this.starsAmountInput.nativeElement.focus();
+        // Call change detection
+        this.cdr.detectChanges();
+        this.starsAmountInput.nativeElement.focus();
         break;
       }
     }
@@ -67,6 +66,5 @@ export class AppComponent implements OnInit {
       }
     });
     this.dv1.injectComponent(placeholder);
-    console.log('NS');
   }
  }

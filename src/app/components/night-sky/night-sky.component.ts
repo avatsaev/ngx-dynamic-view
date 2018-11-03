@@ -8,31 +8,19 @@ import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class NightSkyComponent implements OnInit {
   @ViewChild('starField', {read: ElementRef}) starField: ElementRef;
   @Input()starsAmount: number;
-  
 
-  constructor() { }
-
-  
   ngOnInit() {
-    this.createStareInit();
-    this.starsAmount = (this.starsAmount === undefined ? 50 : this.starsAmount);
-    console.log(this.starsAmount);
+    this.starsAmount = ((this.starsAmount === undefined || this.starsAmount === null )? 0 : this.starsAmount);
+    this.createStareInit(this.starsAmount);
   }
 
-  ngOnChanges() {
-    //console.log('this.starsAmount');
-  }
-  ngDoCheck() {
-    let starsAmount = this.starsAmount;
-   // console.log(starsAmount);
-  }
-
-
-  private createStareInit() {
+  private createStareInit(starsAmount) {
     const starCreation = setInterval(this.createStare, 800, this.starField);
+    const timeoutVal = starsAmount === 0 ? 0 : (starsAmount - 1) * 1000;
+    
     setTimeout(function() {
       clearInterval(starCreation);
-    },100000);
+    },timeoutVal);
   }
 
   private createStare(starField) {
