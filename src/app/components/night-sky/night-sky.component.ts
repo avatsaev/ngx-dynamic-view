@@ -15,9 +15,9 @@ export class NightSkyComponent implements OnInit {
   }
 
   private createStareInit(starsAmount) {
-    const starCreation = setInterval(this.createStare, 800, this.starField);
-    const timeoutVal = starsAmount === 0 ? 0 : (starsAmount - 1) * 1000;
-    
+    const starCreation = setInterval(this.createStare, 1000, this.starField);
+    const timeoutVal = starsAmount === 0 ? 0 : starsAmount * 1000;
+
     setTimeout(function() {
       clearInterval(starCreation);
     },timeoutVal);
