@@ -1,5 +1,20 @@
-<dynamic-view 
- #dv1
- [widgetList]="widgetList" 
- (componentInjectionRequested)="onComponentInjectionRequested($event)"
- ></dynamic-view>
+<div class="page-content">
+    <h3>Dynamic components in Angular</h3>
+    <p class="mb24">Component templates are not always fixed. An application may need to load new components at runtime.<sup>&#169;</sup></p>
+    <dynamic-view 
+        #dv1
+        [widgetList]="widgetList" 
+        (componentInjectionRequested)="onComponentInjectionRequested($event)">
+        <div *ngIf="selectedComponentId == 'NS'">
+            <p>I know! There are 
+                <input class="string-input" 
+                    #starsAmountInput
+                    type="number" 
+                    max="1000" 
+                    min="0" 
+                    [(ngModel)]="starsAmount" 
+                    (ngModelChange)="onStarsAmountChange()" /> 
+                stars at the sky and I want to see them all!</p>
+        </div>
+    </dynamic-view>
+</div>

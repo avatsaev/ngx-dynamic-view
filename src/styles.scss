@@ -19,14 +19,31 @@ h4 {
     font-weight: normal;
     margin: 0;
 }
-select {
+select, input {
     font-family: Tahoma;
     font-size: 13px;
     width: 150px;
     border: 1px solid #cecece;
     outline: none;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+p {
+    margin-bottom: 8px;
+}
 .page-content {
     padding: 12px;
+    width: 780px;
 }
-
+.string-input {
+    border: none;
+    border-bottom: 1px solid #cecece;
+    min-width: 60px;
+    width: auto;
+    text-align: center;
+}
