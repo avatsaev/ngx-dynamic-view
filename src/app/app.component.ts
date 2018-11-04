@@ -39,11 +39,12 @@ export class AppComponent implements OnInit {
       case 'ACC': {
         const placeholder = new DynamicViewPlaceholder<AccordionComponent>(AccordionComponent, {
           inputs: {
-            title: 'My button'
+            title: 'Click here'
           },
           outputHandlers: {
             details: this.onDetails
-          }
+          },
+          message: '<b>Pandas</b> spend most of their time eating (over 12 hours a day) and is the most expensive animal to have in a zoo: 5 times costlier than elephant, which comes second.'
         });
         this.dv1.injectComponent(placeholder);
         break;
